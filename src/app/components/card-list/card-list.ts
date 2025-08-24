@@ -17,13 +17,13 @@ import { EditDialog } from '../edit-dialog/edit-dialog';
   standalone: true,
   imports: [
     NgFor,
-    NgIf,
+    // NgIf,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   templateUrl: './card-list.html',
   styleUrls: ['./card-list.scss']
@@ -56,9 +56,6 @@ export class CardList implements OnInit {
     });
   }
 
-
-
-
   addCard() {
     this.cards.update((cards) => [
       {
@@ -75,7 +72,7 @@ export class CardList implements OnInit {
   editCard(card: Product) {
     const dialogRef = this.dialog.open(EditDialog, {
       width: '400px',
-      data: { ...card } // pass copy of card
+      data: { ...card }
     });
 
     dialogRef.afterClosed().subscribe((result) => {
