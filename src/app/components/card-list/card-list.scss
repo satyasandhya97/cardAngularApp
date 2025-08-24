@@ -1,17 +1,28 @@
 .dark-header {
-  background: linear-gradient(145deg, #1a1a1a, #111827);
-  color: #e0e7ff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-
-  .app-title {
-    font-weight: 600;
-    font-size: 20px;
-  }
-
-  .spacer {
-    flex: 1 1 auto;
-  }
+  background-color: #0f172a;
+  color: #f1f5f9;
 }
+
+mat-toolbar .app-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+button[mat-icon-button] {
+  width: 52px;
+  height: 52px;
+}
+
 
 .card-grid {
   display: grid;
