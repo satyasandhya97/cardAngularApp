@@ -9,6 +9,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { CardServices } from '../../services/card-services';
 import { Product } from '../../models/card.model';
+import { MatDialog } from '@angular/material/dialog';
+import { EditDialog } from '../edit-dialog/edit-dialog';
 
 @Component({
   selector: 'app-card-list',
@@ -27,13 +29,11 @@ import { Product } from '../../models/card.model';
   styleUrls: ['./card-list.scss']
 })
 export class CardList implements OnInit {
-  // products from API
   products: Product[] = [];
 
-  // signal for UI
   cards = signal<Product[]>([]);
 
-  constructor(private cardService: CardServices) { }
+  constructor(private cardService: CardServices, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.cardService.getProducts().subscribe({
@@ -72,10 +72,21 @@ export class CardList implements OnInit {
       ...cards,
     ]);
   }
-
   editCard(card: Product) {
-    console.log('Edit:', card);
+    const dialogRef = this.dialog.open(EditDialog, {
+      width: '400px',
+      data: { ...card } // pass copy of card
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.cards.update((cards) =>
+          cards.map((c) => (c.id === card.id ? result : c))
+        );
+      }
+    });
   }
+
 
   deleteCard(card: Product) {
     this.cards.update((cards) => cards.filter((c) => c.id !== card.id));

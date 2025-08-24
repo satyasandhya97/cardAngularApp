@@ -14,10 +14,9 @@ const LOCAL_STORAGE_KEY = 'cardsApp:data:v1';
 export class CardServices {
   constructor(private http: HttpClient) { }
 
-  // ✅ Cleaned return type → always Product[]
   getProducts(): Observable<Product[]> {
     return this.http.get<{ data: { data: Product[] } }>(API_URL).pipe(
-      map((res) => res.data?.data || []) // pull actual products array
+      map((res) => res.data?.data || [])
     );
   }
 

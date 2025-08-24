@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="header dark-header">
-  <span class="app-title">📇 Card Manager</span>
+  <span class="app-title">Card Manager App</span>
   <span class="spacer"></span>
   <button mat-icon-button matTooltip="Add Card" (click)="addCard()">
     <mat-icon>add_circle</mat-icon>
@@ -22,7 +22,7 @@
       <mat-card-subtitle>{{ card.category }}</mat-card-subtitle>
     </mat-card-header>
 
-    <img *ngIf="card.thumbnail" mat-card-image [src]="card.thumbnail" alt="{{ card.title }}" />
+    <!-- <img *ngIf="card.thumbnail" mat-card-image [src]="card.thumbnail" alt="{{ card.title }}" /> -->
 
     <mat-card-content>
       <p><strong>Price:</strong> ₹{{ card.price }}</p>
