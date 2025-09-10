@@ -63,6 +63,7 @@ export class CardList implements OnInit {
         title: 'New Card',
         category: 'Custom',
         price: 0,
+        brand: '',
         thumbnail: '',
         images: [],
       },
